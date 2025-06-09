@@ -6,7 +6,7 @@ using ScreenSound.Modelos;
 try
 {
     var artistaDAL = new ArtistaDAL();
-    artistaDAL.Adicionar(new Artista("Foo Fighters", "Os cara é bão"));
+    artistaDAL.Listar(new Artista("Foo Fighters", "Os cara é bão demais", "2"));
     var listaArtistas = artistaDAL.Listar();
 
     foreach ( var artista in listaArtistas )
