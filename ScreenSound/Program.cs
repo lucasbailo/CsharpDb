@@ -5,8 +5,14 @@ using ScreenSound.Modelos;
 
 try
 {
-    var artistaDAL = new ArtistaDAL();
-    artistaDAL.Listar(new Artista("Foo Fighters", "Os cara é bão demais", "2"));
+    var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
+
+
+    var novoArtista = new Artista("Zeca Pagodinho", "Esse cara é gente boa") { Id = 4};
+
+    //artistaDAL.Adicionar(novoArtista);
+    artistaDAL.Deletar(novoArtista);
     var listaArtistas = artistaDAL.Listar();
 
     foreach ( var artista in listaArtistas )

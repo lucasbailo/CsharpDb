@@ -13,6 +13,7 @@ namespace ScreenSound.Banco
 {
     internal class ScreenSoundContext: DbContext
     {
+        public DbSet<Artista> Artistas { get; set; }
 
         private string conectionString = "Data Source=DEVFRONT;Integrated Security=True;Initial Catalog=ScreenSoundDb;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
