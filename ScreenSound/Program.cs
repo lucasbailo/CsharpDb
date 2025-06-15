@@ -12,8 +12,11 @@ try
     var novoArtista = new Artista("Zeca Pagodinho", "Esse cara é gente boa") { Id = 4};
 
     //artistaDAL.Adicionar(novoArtista);
-    artistaDAL.Deletar(novoArtista);
+    //artistaDAL.Deletar(novoArtista);
     var listaArtistas = artistaDAL.Listar();
+
+    var artistaRecuperado = artistaDAL.RecuperarPeloNome("Zeca Pagodinho");
+    Console.WriteLine(artistaRecuperado);
 
     foreach ( var artista in listaArtistas )
     {
