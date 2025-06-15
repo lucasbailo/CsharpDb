@@ -8,7 +8,7 @@ using ScreenSound.Modelos;
 
 namespace ScreenSound.Banco
 {
-    internal class ArtistaDAL
+    internal class ArtistaDAL : DAL<Artista>
     {
         private readonly ScreenSoundContext context;
 
@@ -17,7 +17,7 @@ namespace ScreenSound.Banco
             this.context = context;
         }
 
-        public IEnumerable<Artista> Listar()
+        public override IEnumerable<Artista> Listar()
         {
 
             return context.Artistas.ToList();
