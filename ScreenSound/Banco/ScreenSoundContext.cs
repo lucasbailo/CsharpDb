@@ -19,7 +19,9 @@ namespace ScreenSound.Banco
         private string conectionString = "Data Source=DEVFRONT;Integrated Security=True;Initial Catalog=ScreenSoundDbV2;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(conectionString);
+            optionsBuilder
+                .UseSqlServer(conectionString)
+                .UseLazyLoadingProxies();
         }
     }
 }
