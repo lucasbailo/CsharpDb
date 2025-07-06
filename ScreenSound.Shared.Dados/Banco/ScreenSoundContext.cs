@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ScreenSound.Banco
 {
-    internal class ScreenSoundContext: DbContext
+    public class ScreenSoundContext: DbContext
     {
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<Musica> Musicas { get; set; }

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSound.API", "ScreenSo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSound.Shared.Modelos", "ScreenSound.Shared.Modelos\ScreenSound.Shared.Modelos.csproj", "{A8F5FEC2-DEF1-43D2-BD3B-8A9F19861381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSound.Shred.Dados", "ScreenSound.Shred.Dados\ScreenSound.Shred.Dados.csproj", "{C744BB58-0EFE-43F1-B20D-E7FCC45191FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSound.Shared.Dados", "ScreenSound.Shared.Dados\ScreenSound.Shared.Dados.csproj", "{97BFD0D6-1A14-AE7C-5B2B-E14815B73A68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{A8F5FEC2-DEF1-43D2-BD3B-8A9F19861381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F5FEC2-DEF1-43D2-BD3B-8A9F19861381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8F5FEC2-DEF1-43D2-BD3B-8A9F19861381}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C744BB58-0EFE-43F1-B20D-E7FCC45191FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C744BB58-0EFE-43F1-B20D-E7FCC45191FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C744BB58-0EFE-43F1-B20D-E7FCC45191FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C744BB58-0EFE-43F1-B20D-E7FCC45191FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97BFD0D6-1A14-AE7C-5B2B-E14815B73A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BFD0D6-1A14-AE7C-5B2B-E14815B73A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BFD0D6-1A14-AE7C-5B2B-E14815B73A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BFD0D6-1A14-AE7C-5B2B-E14815B73A68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
