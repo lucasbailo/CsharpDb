@@ -16,12 +16,12 @@ namespace ScreenSound.Banco
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<Musica> Musicas { get; set; }
 
-        private string conectionString = "Data Source=DEVFRONT;Integrated Security=True;Initial Catalog=ScreenSoundDbV2;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        private string conectionString = "Data Source=TIDEV-03;Integrated Security=True;Initial Catalog=ScreenSoundDbV2;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
                 .UseSqlServer(conectionString)
-                .UseLazyLoadingProxies();
+                .UseLazyLoadingProxies(false);
         }
     }
 }
