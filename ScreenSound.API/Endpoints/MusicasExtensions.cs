@@ -1,58 +1,66 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScreenSound.API.Requests;
 using ScreenSound.Banco;
 using ScreenSound.Modelos;
 
-namespace ScreenSound.API.Endpoints
+namespace ScreenSound.API.Endpoints;
+
+public static class MusicasExtensions
 {
-    public static class MusicasExtensions
+    public static void AddEndPointsMusicas(this WebApplication app)
     {
-        public static void AddEndpointsMusicas(this WebApplication app)
+        #region Endpoint Músicas
+        app.MapGet("/Musicas", ([FromServices] DAL<Musica> dal) =>
         {
-            app.MapGet("/Musicas", ([FromServices] DAL<Musica> dal) =>
+            return Results.Ok(dal.Listar());
+        });
+
+        app.MapGet("/Musicas/{nome}", ([FromServices] DAL<Musica> dal, string nome) =>
+        {
+            var musica = dal.RecuperarPor(a => a.Nome.ToUpper().Equals(nome.ToUpper()));
+            if (musica is null)
             {
-                return Results.Ok(dal.Listar());
-            });
+                return Results.NotFound();
+            }
+            return Results.Ok(musica);
 
-            app.MapGet("/Musicas/{nome}", ([FromServices] DAL<Musica> dal, string nome) =>
+        });
+
+        app.MapPost("/Musicas", ([FromServices] DAL<Musica> dal, [FromBody] MusicaRequest musicaRequest) =>
+        {
+            var musica = new Musica(musicaRequest.nome)
             {
-                var musica = dal.RecuperarPor(a => a.Nome.ToUpper().Equals(nome.ToUpper()));
-                if (musica is null)
-                {
-                    return Results.NotFound();
-                }
-                return Results.Ok(musica);
+                ArtistaId = musicaRequest.ArtistaId,
+                AnoLancamento = musicaRequest.anoLancamento
+            };
+            dal.Adicionar(musica);
+            return Results.Ok();
+        });
 
-            });
-
-            app.MapPost("/Musicas", ([FromServices] DAL<Musica> dal, [FromBody] Musica musica) =>
+        app.MapDelete("/Musicas/{id}", ([FromServices] DAL<Musica> dal, int id) => {
+            var musica = dal.RecuperarPor(a => a.Id == id);
+            if (musica is null)
             {
-                dal.Adicionar(musica);
-                return Results.Ok();
-            });
+                return Results.NotFound();
+            }
+            dal.Deletar(musica);
+            return Results.NoContent();
 
-            app.MapDelete("/Musicas/{id}", ([FromServices] DAL<Musica> dal, int id) => {
-                var musica = dal.RecuperarPor(a => a.Id == id);
-                if (musica is null)
-                {
-                    return Results.NotFound();
-                }
-                dal.Deletar(musica);
-                return Results.NoContent();
+        });
 
-            });
+        app.MapPut("/Musicas", ([FromServices] DAL<Musica> dal, [FromBody] MusicaRequestEdit musicaRequestEdit) => {
+            var musicaAAtualizar = dal.RecuperarPor(a => a.Id == musicaRequestEdit.Id);
+            if (musicaAAtualizar is null)
+            {
+                return Results.NotFound();
+            }
+            musicaAAtualizar.Nome = musicaRequestEdit.nome;
+            musicaAAtualizar.AnoLancamento = musicaRequestEdit.anoLancamento;
 
-            app.MapPut("/Musicas", ([FromServices] DAL<Musica> dal, [FromBody] Musica musica) => {
-                var musicaAAtualizar = dal.RecuperarPor(a => a.Id == musica.Id);
-                if (musicaAAtualizar is null)
-                {
-                    return Results.NotFound();
-                }
-                musicaAAtualizar.Nome = musica.Nome;
-                musicaAAtualizar.AnoLancamento = musica.AnoLancamento;
+            dal.Atualizar(musicaAAtualizar);
+            return Results.Ok();
+        });
+        #endregion
 
-                dal.Atualizar(musicaAAtualizar);
-                return Results.Ok();
-            });
-        }
     }
 }
